@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+	<link rel="stylesheet" type="text/css" title="main" href="main.css">
+	<link rel="alternate stylesheet" type="text/css" title="contrast" href="contrast.css">
+	<link rel="alternate stylesheet" type="text/css" title="minimal" href="main-minimal.css">
+	<title>JavaScript - Homework 004 - LOOPS</title>
+	<script type="text/javascript">
+	function togglediv(id) {
+    var div = document.getElementById(id);
+    div.style.display = div.style.display == "none" ? "block" : "none";
+	}
+	</script>
+</head>
+<body>
+<div class="wrapper">
+		<header>
+			<h1>Homework 004 - LOOPS</h1>
+		</header>
+		<div class="display-menu">
+			<form>
+				<input type="submit" onclick="switch_style('main');return false;" name="main" value="Main Theme" id="main">
+				<input type="submit" onclick="switch_style('minimal');return false;" name="minimal" value="Minimal" id="minimal">
+				<input type="submit" onclick="switch_style('contrast');return false;" name="contrast" value="Contrast" id="contrast">
+			</form>
+		</div>
+		<nav>
+			<span>Choose task: </span>
+			<ul>
+				<li><button onclick="togglediv('task1')">1</button></li>
+				<li><button onclick="togglediv('task2')">2</button></li>
+				<li><button onclick="togglediv('task3')">3</button></li>
+				<li><button onclick="togglediv('task4')">4</button></li>
+				<li><button onclick="togglediv('task5')">5</button></li>
+				<li><button onclick="togglediv('task6')">6</button></li>
+				<li><button onclick="togglediv('task7')">7</button></li>
+				<li><button onclick="togglediv('task8')">8</button></li>
+				<li><button onclick="togglediv('task9')">9</button></li>
+			</ul>
+		</nav>
+		<div class="legend">single click to expand/collapse each task - All tasks tested with console.log() 
+		<br/>Some of the page functionallity is not as expected but this is only for training purposes!</div>
+		<main class="content">
+		<div id="task1">
+			<h2>Problem 001 - Numbers</h2>
+			<p class="description">Write a script that prints all the numbers from 1 to N.</p>
+			<article>
+<pre class="code-print">
+	var output = 'All number from 1 to N : ';
+	function processFormData () {
+		var input = document.getElementById('task1-input').value;
+		for (var i = 1; i <= input; i+=1) {
+			output += i + ' ';
+		}
+		console.log('Start test (problem 001)');
+		console.log(output);
+		console.log('End test (problem 001)');
+		var div = document.getElementById("answer-element");
+		div.innerHTML = output ;
+		document.body.appendChild(div);
+		output = 'All number from 1 to N : ';
+	}
+	<span class="demo">Live demo - Test the program with custom number <br/>You need to enter the same number twice for this to work<br/>For suggestions WHY plese post in the forum after my homework link post.</span>
+	<form name ="test" id="test_frm" action="#">
+		<input type="text" id="task1-input" name="task1-input" size="10" placeholder="Enter Number" value="15"/>
+		<input type="submit" value="Submit a number N" onclick="processFormData();" >
+		<input type="button" value="Collapse/Expand Answer" onclick="togglediv('answer-element');" >
+	</form>
+</pre>
+					<div class="box" id="answer-element"></div>
+				<aside>source file : javascript.js</aside>
+			</article>
+		</div>
+		<div id="task2">
+			<h2>Problem 002 - Numbers not divisible</h2>
+			<p class="description">Write a script that prints all the numbers from 1 to N, that are not divisible by 3 and 7 at the same time</p>
+			<article>
+<pre class="code-print">
+	var numCheck = function () {
+	var number = document.getElementById('task2-input').value;
+		for (var i = 0; i <= number; i++) {
+			if (i % 3 !==0 && i % 7 !==0) {
+			output += ' '+i;
+			}
+		}
+		var div = document.getElementById("answer-element2");
+		div.innerHTML = output ;
+		document.body.appendChild(div);
+		output = 'All number from 1 to N : ';
+	};
+	<span class="demo">Live demo - Test the program with custom number <br/>You need to enter the same number twice for this to work<br/>For suggestions WHY plese post in the forum after my homework link post.</span>
+	<form name ="test2" id="test_frm2" action="#">
+		<input type="text" id="task2-input" name="task2-input" size="10" placeholder="Enter Number" value="15"/>
+		<input type="submit" value="Submit a number N" onclick="numCheck();" >
+		<input type="submit" value="Collapse/Expand Answer" onclick="togglediv('answer-element2');" >
+	</form>
+</pre>
+		<div class="box" id="answer-element2"></div>
+				<aside>source file : javascript.js</aside>				
+			</article>
+		</div>
+		<div id="task3">
+			<h2>Problem 003 - Min/Max of sequence</h2>
+			<p class="description">Write a script that finds the max and min number from a sequence of numbers.</p>
+			<article>
+<pre class="code-print">
+	var max = 0;
+	var min = 0;
+	max += aNums[0];
+	min += aNums[0];
+	for (var i = 0; i < aNums.length; i++) {
+		if (max < aNums[i]) {
+			max = aNums[i];
+			console.log(max);
+		}
+		if (min > aNums[i]) {
+			min = aNums[i];
+		}
+	}
+</pre>
+				<aside>source file : javascript.js</aside>
+			</article>
+		</div>
+		<div id="task4">
+			<h2>Problem 004 - Lexicographically smallest</h2>
+			<p class="description">Write a script that finds the lexicographically smallest and largest property in document, window and navigator objects.</p>
+			<article>
+<pre class="code-print">
+	var sortProperties = function (object) {
+		var props = [];
+		for (var propName in object) {
+			props.push(propName);
+		}
+		props.sort();
+		console.log('First property: '+props[0]);
+		console.log('Last property: '+props[props.length-1]);
+	};
+	sortProperties(document);
+	sortProperties(window);
+	sortProperties(navigator);
+</pre>
+				<aside>source file : javascript.js</aside>				
+			</article>
+		</div>
+		<div id="task5">
+			<h2>Problem 005 </h2>
+			<p class="description"></p>
+			<article>
+<pre class="code-print">
+
+</pre>
+				<aside>source file : javascript.js</aside>				
+			</article>
+		</div>	
+		<div id="task6">
+			<h2>Problem 006 </h2>
+			<p class="description"></p>
+			<article>
+<pre class="code-print">
+</pre>
+				<aside>source file : javascript.js</aside>				
+			</article>
+		</div>	
+		<div id="task7">
+			<h2>Problem 007 </h2>
+			<p class="description"></p>
+			<article>
+<pre class="code-print">
+</pre>
+				<aside>source file : javascript.js</aside>				
+			</article>
+		</div>
+		<div id="task8">
+			<h2>Problem 008 </h2>
+			<p class="description"></p>
+			<article>
+<pre class="code-print">
+</pre>
+				<aside>source file : javascript.js</aside>				
+			</article>
+		</div>
+		<div id="task9">
+			<h2>Problem 009 </h2>
+			<p class="description"></p>
+			<article>
+<pre class="code-print">
+</pre>
+				<aside>source file : javascript.js</aside>				
+			</article>
+		</div>	
+		</main>				
+</div>
+<script type="text/javascript" src="javascript.js"></script>
+<script type="text/javascript" src="css-switcher.js"></script>
+</body>
+</html>
